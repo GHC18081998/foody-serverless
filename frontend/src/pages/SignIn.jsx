@@ -24,6 +24,7 @@ function SignIn() {
     setErr("");
     try {
       const result = await authAPI.signin({ email, password });
+      console.log(result.data);
       if (result.status === 200) {
         dispatch(setUserData(result.data));
         navigate("/");

@@ -26,7 +26,7 @@ const allowedOrigins = [
   "http://127.0.0.1:5173",
   "http://127.0.0.1:5174",
   "http://127.0.0.1:5175",
-  "http://bucket-server-less-1.s3-website-us-east-1.amazonaws.com"
+  "http://niharika-s3-serverless.s3-website-us-east-1.amazonaws.com"
 ];
 
 // ✅ CORS Middleware
