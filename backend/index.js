@@ -64,8 +64,16 @@ app.use("/api/order", orderRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/rating", ratingRouter);
 
-// ✅ DB Connection
-connectDb();
+// ✅ DB Connection Middleware (Serverless Safe)
+app.use(async (req, res, next) => {
+  await connectDb(); // Forces Lambda to wait for the DB on cold starts
+  next();
+});
+
+// ✅ Routes (Must come AFTER the DB middleware)
+app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
+// ... other routes
 
 // ✅ Export for AWS Lambda
 export const handler = serverless(app);
